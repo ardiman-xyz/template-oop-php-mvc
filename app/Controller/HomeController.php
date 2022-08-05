@@ -10,15 +10,10 @@ class HomeController
     public function index(): void
     {
         $model = [
-            "title"     => "Belajar PHP MVC",
+            "title"     => "PHP Login Manajement",
             "content"   => "selamat datang di course belajar PHP MVC"
         ];
 
         View::render("Home/index", $model);
-    }
-
-    public function hello(): void
-    {
-        echo "HomeController.hello()";
     }
 }
