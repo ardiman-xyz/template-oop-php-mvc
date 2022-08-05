@@ -26,12 +26,11 @@ class UserService
         $user = $this->userRepository->findById($request->id);
 
         if ($user !== null) {
-            // throw new ValidationException("user already exist");
+            throw new ValidationException("user already exist");
         }
 
         try {
 
-            Database::beginTransaction();
             $user = new User();
             $user->id = $request->id;
             $user->name = $request->name;
@@ -43,10 +42,7 @@ class UserService
             $response->user = $user;
 
             return $response;
-
-            Database::commitTransaction();
         } catch (Exception $exception) {
-            Database::rollbackTransaction();
             throw $exception;
         }
     }
@@ -57,7 +53,7 @@ class UserService
             $request->id === null || $request->name === null || $request->password === null ||
             trim($request->id) === "" || trim($request->name) === "" || trim($request->password) === ""
         ) {
-            throw new ValidationException("cannot be null");
+            throw new ValidationException("field id, user, password is required!");
         }
     }
 }
