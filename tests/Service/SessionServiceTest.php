@@ -21,7 +21,7 @@ class SessionServiceTest extends TestCase
     public function testCreate()
     {
         $session = $this->sessionService->create("ardiman");
-        $this->expectOutputRegex("[PHP-MVC: $session->id]");
+        // $this->expectOutputRegex("[PHP-MVC: $session->id]");
 
         $result = $this->sessionRepostory->findById($session->id);
 
