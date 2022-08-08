@@ -45,4 +45,11 @@ class UserController
             ]);
         }
     }
+
+    public function login()
+    {
+        View::render("User/login", [
+            'title' => 'user login'
+        ]);
+    }
 }
